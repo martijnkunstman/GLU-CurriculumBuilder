@@ -52,3 +52,10 @@
   flex-direction: column;
   align-items: center;
 }
+
+.Bin{
+  border: 1px black solid;
+  margin: 5px;
+  width:100px;
+  height:100px;
+}

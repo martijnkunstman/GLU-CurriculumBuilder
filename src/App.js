@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
-import Project from './Project';
-import Properties from './Properties';
+import Project from './Project/Project';
+import Properties from './Properties/Properties';
+import Bin from './Bin';
 import './App.css';
 
 let propertiesData = [
@@ -114,6 +115,9 @@ export default function App() {
       setProjects(projectsData);
     }
   }
+  function removePropertyTypeFromProject(propertyId, typeId, projectId){
+
+  }
   function findPropertyTypeInProject(propertyId, typeId, projectId) {
     return projectsData
       .find((x) => x.id === projectId)
@@ -134,6 +138,7 @@ export default function App() {
               findTypeOfProperty={findTypeOfProperty}
             />
           ))}
+          <Bin id="bin"></Bin>
         </div>
         <div>
           <Properties propertiesData={propertiesData} addPropertyTypeToProject={addPropertyTypeToProject} />

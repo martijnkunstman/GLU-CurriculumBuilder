@@ -1,4 +1,5 @@
 export const ItemTypes = {
-    BOX: 'box',
+    PROPERTY: 'property',
+    DELETE: 'delete',
   }
   

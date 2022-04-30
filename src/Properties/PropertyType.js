@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDrag } from 'react-dnd'
-import { ItemTypes } from './ItemTypes.js'
-import './App.css';
+import { ItemTypes } from '../ItemTypes.js'
+import '../App.css';
 
 export default function PropertyType(props) {
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.BOX,
+    type: ItemTypes.PROPERTY,
     item: props,
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult()
