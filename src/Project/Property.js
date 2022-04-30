@@ -10,7 +10,6 @@ export default function Property(props) {
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult()
       if (item && dropResult) {
-        alert(item.property.id+"-"+item.property.typeId+"-"+item.projectId);
         props.removePropertyTypeFromProject(item.property.id, item.property.typeId, item.projectId);
       }
     },

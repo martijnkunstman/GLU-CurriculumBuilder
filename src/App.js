@@ -111,12 +111,15 @@ export default function App() {
   }
   function addPropertyTypeToProject(propertyId, typeId, projectId) {
     if (!findPropertyTypeInProject(propertyId, typeId, projectId)) {
-      projectsData.find((x) => x.id === projectId).properties.push({ id: propertyId, typeId: typeId });
-      setProjects(projectsData);
+      let projectsDataTemp = [...projectsData];
+      projectsDataTemp.find((x) => x.id === projectId).properties.push({ id: propertyId, typeId: typeId });
+      setProjects(projectsDataTemp);
     }
   }
   function removePropertyTypeFromProject(propertyId, typeId, projectId){
-
+    let projectsDataTemp = [...projectsData];
+    projectsDataTemp.find((x) => x.id === projectId).properties = projectsDataTemp.find((x) => x.id === projectId).properties.filter((x) => x.id!== propertyId || x.typeId!== typeId);
+    setProjects(projectsDataTemp);
   }
   function findPropertyTypeInProject(propertyId, typeId, projectId) {
     return projectsData
@@ -136,6 +139,7 @@ export default function App() {
               description={project.description}
               properties={project.properties}
               findTypeOfProperty={findTypeOfProperty}
+              removePropertyTypeFromProject={removePropertyTypeFromProject}
             />
           ))}
           <Bin id="bin"></Bin>

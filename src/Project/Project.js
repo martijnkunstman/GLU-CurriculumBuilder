@@ -25,7 +25,7 @@ export default function Project(props) {
       <div className="title">{props.title}</div>
       <div className="properties">
         {props.properties.map((property) => (
-          <Property key={property.id+"-"+property.typeId} findTypeOfProperty={props.findTypeOfProperty} projectId={props.id} property={property} />
+          <Property removePropertyTypeFromProject={props.removePropertyTypeFromProject} key={property.id+"-"+property.typeId} findTypeOfProperty={props.findTypeOfProperty} projectId={props.id} property={property} />
         ))}
       </div>
     </div>
