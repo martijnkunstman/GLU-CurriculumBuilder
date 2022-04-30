@@ -1,4 +1,5 @@
 import React from 'react';
+import PropertyType from './PropertyType';
 import './App.css';
 
 export default function Property(props) {
@@ -6,13 +7,7 @@ export default function Property(props) {
     <div className="property">
       <div className="title">{props.property.title}</div>
       {props.property.types.map((propertyType) => (
-        <div key={propertyType.id} className="type">
-          <div>{propertyType.title}</div>
-          <img
-            style={{ height: '24px', width: '24px' }}
-            src={'./svg/' + propertyType.icon + '-solid.svg'}
-          ></img>
-        </div>
+        <PropertyType key={propertyType.id} propertyId={props.property.id} propertyType={propertyType} addPropertyTypeToProject={props.addPropertyTypeToProject}/>
       ))}
     </div>
   );

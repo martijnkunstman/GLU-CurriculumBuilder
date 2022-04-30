@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 import Project from './Project';
 import Properties from './Properties';
 import './App.css';
@@ -74,8 +76,7 @@ let projectsData = [
     title: 'Project 1',
     discription: 'desc',
     properties: [
-      { id: 1, typeId: 1 },
-      { id: 2, typeId: 2 },
+
     ],
   },
   {
@@ -101,28 +102,43 @@ let projectsData = [
 
 export default function App() {
   const [projects, setProjects] = useState(projectsData);
+  
   function findTypeOfProperty(typeId, propertyId) {
     return propertiesData
       .find((x) => x.id === propertyId)
       .types.find((x) => x.id === typeId);
   }
+  function addPropertyTypeToProject(propertyId, typeId, projectId) {
+    if (!findPropertyTypeInProject(propertyId, typeId, projectId)) {
+      projectsData.find((x) => x.id === projectId).properties.push({ id: propertyId, typeId: typeId });
+      setProjects(projectsData);
+    }
+  }
+  function findPropertyTypeInProject(propertyId, typeId, projectId) {
+    return projectsData
+      .find((x) => x.id === projectId)
+      .properties.find((x) => x.id === propertyId && x.typeId === typeId);
+  }
+
   return (
     <div style={{ display: 'flex' }}>
-      <div>
-        {projects.map((project) => (
-          <Project
-            id={project.id}
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            properties={project.properties}
-            findTypeOfProperty={findTypeOfProperty}
-          />
-        ))}
-      </div>
-      <div>
-        <Properties propertiesData={propertiesData} />
-      </div>
+      <DndProvider backend={HTML5Backend}>
+        <div>
+          {projects.map((project) => (
+            <Project
+              id={project.id}
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              properties={project.properties}
+              findTypeOfProperty={findTypeOfProperty}
+            />
+          ))}
+        </div>
+        <div>
+          <Properties propertiesData={propertiesData} addPropertyTypeToProject={addPropertyTypeToProject} />
+        </div>
+      </DndProvider>
     </div>
   );
 }

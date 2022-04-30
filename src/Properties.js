@@ -9,6 +9,7 @@ export default function Properties(props) {
         <Property
           key={property.id}
           property={property}
+          addPropertyTypeToProject={props.addPropertyTypeToProject} 
         />
       ))}
     </div>
