@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+html,
+body {
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 0.8em;
+}
+
+.Project {
+  border: 1px black solid;
+  width: 200px;
+  border-radius: 10px;
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.Project .title {
+  flex-basis: 100%;
+  margin: 5px;
+}
+
+.Project .properties {
+  border: 0px black solid;
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Project .property {
+  border: 0px black solid;
+  margin: 1px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Properties {
+  border: 1px black solid;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.Properties .property {
+  border: 1px black solid;
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.Properties .title {
+  flex-basis: 100%;
+  margin: 5px;
+}
+
+.Properties .type {
+  border: 1px black solid;
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
