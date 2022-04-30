@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Project from './Project';
 import Properties from './Properties';
-import './style.css';
+import './App.css';
 
 let propertiesData = [
   {
@@ -97,6 +97,7 @@ let projectsData = [
     ],
   },
 ];
+
 
 export default function App() {
   const [projects, setProjects] = useState(projectsData);
