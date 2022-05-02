@@ -1,19 +1,25 @@
 .Planning{
     overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
   }
-
-
+.subtitle{
+    flex-basis: 100%;
+    margin-top: 20px;
+}
 .week{
-    height: 80px;
-    width: 80px;
+    height: 100px;
+    width: 50px;
     border: 1px solid rgba(0,0,0,0.1);
-    display: inline-block;
     box-sizing:content-box;
     position: relative;
     margin:2px;
     margin-top:30px;
     border-radius:10px;
     background-color: rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .weekTitle{

@@ -13,18 +13,18 @@ export default function Planning(props) {
   function createPlanningMap() {
     for (let i = 0; i < planningData.schoolYearIds.length; i++) {
       let schoolYear = planningConfig.schoolYears.find(schoolYear => schoolYear.id === planningData.schoolYearIds[i]);
-      weeks.push(<div id="subtitle" key={("title" + counter)}>Leerjaar {(i + 1)} - {schoolYear.years.join("-")} </div>);
+      weeks.push(<div className="subtitle" key={("title" + counter)}>Leerjaar {(i + 1)} - {schoolYear.years.join("-")} </div>);
       let start = schoolYear.quarters[0][0] - 1;
       let end = schoolYear.quarters[schoolYear.quarters.length - 1][1] + 52;
       for (let j = start; j < end; j++) {
         let quarter = findQuarterByWeek((j % 52 + 1), schoolYear.quarters, i);
         let holiday = findHolidays((j % 52 + 1), schoolYear.holidays);
         let quarterText = "";
-        if (quarter != quarterNow) {
+        if (quarter !== quarterNow) {
           quarterNow++;
           quarterText = " - P" + quarter + "";
         }
-        weeks.push(<Week name={(j % 52 + 1) + quarterText} key={("id" + counter)} style={{ width: "80px" }} />);
+        weeks.push(<Week name={(j % 52 + 1) + quarterText} holiday={holiday} key={("id" + counter)} style={{ width: "80px" }} />);
         counter++;
         //app.innerHTML += '<div id="syid-'+planningData.schoolYearIds[i]+'|w-'+(j % 52 + 1)+'" class="scedule-item" style="width:80px;" data-week="' + (j % 52 + 1) + '" data-schoolyearId="' + planningData.schoolYearIds[i] + '" data-quarter="' + quarter + '"><div class="scedule-item-week">' + (j % 52 + 1) + quarterText + '</div><div class="scedule-item-holiday">' + holiday + '</div></div>';
       }
@@ -58,7 +58,7 @@ export default function Planning(props) {
 
   return (
     <div className="Planning">
-      <div>{weeks}</div>
+      {weeks}
     </div>
   );
 }
