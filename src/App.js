@@ -3,15 +3,18 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 import Project from './Project/Project';
 import Properties from './Properties/Properties';
+import Planning from './Planning/Planning';
 import Bin from './Bin';
 import './App.css';
 import { ProjectsData } from './Data/ProjectsData';
 import { PropertiesData } from './Data/PropertiesData';
+import { PlanningData } from './Data/PlanningData';
 
 export default function App() {
 
   let projectsData = ProjectsData;
   let propertiesData = PropertiesData;
+  let planningData = PlanningData;
 
   const [projects, setProjects] = useState(projectsData);
 
@@ -40,8 +43,9 @@ export default function App() {
 
   return (
     <DndProvider backend={HTML5Backend}>
-        <div className="AppContainer">
-        <div className='ProjectContainer'>
+      <div className="AppContainer">
+        <div className='ProjectContainer Window'>
+          Projects
           {projects.map((project) => (
             <Project
               id={project.id}
@@ -55,13 +59,15 @@ export default function App() {
           ))}
           <Bin id="bin"></Bin>
         </div>
-        <div className='PlanningContainer'>
-          b
+        <div className='PlanningContainer Window'>
+          Planning
+          <Planning planningData={planningData}></Planning>
         </div>
-        <div className='PropertiesContainer'>
+        <div className='PropertiesContainer Window'>
+          Properties
           <Properties propertiesData={propertiesData} addPropertyTypeToProject={addPropertyTypeToProject} />
         </div>
-        </div>
+      </div>
     </DndProvider>
   );
 }
