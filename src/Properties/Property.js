@@ -1,6 +1,6 @@
 import React from 'react';
 import PropertyType from './PropertyType';
-import '../App.css';
+import './Properties.css';
 
 export default function Property(props) {
   return (

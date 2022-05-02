@@ -1,0 +1,28 @@
+.Properties {
+    border: 1px black solid;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.Properties .property {
+    border: 1px black solid;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Properties .title {
+    flex-basis: 100%;
+    margin: 5px;
+}
+
+.Properties .type {
+    border: 1px black solid;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDrag } from 'react-dnd'
 import { ItemTypes } from '../ItemTypes.js'
-import '../App.css';
+import './Properties.css';
 
 export default function PropertyType(props) {
   const [{ isDragging }, drag] = useDrag(() => ({

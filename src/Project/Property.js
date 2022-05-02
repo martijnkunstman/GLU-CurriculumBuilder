@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import './Project.css';
 import { useDrag } from 'react-dnd'
 import { ItemTypes } from '../ItemTypes.js'
 

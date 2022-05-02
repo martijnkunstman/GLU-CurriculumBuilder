@@ -60,7 +60,7 @@ export default function App() {
           <Bin id="bin"></Bin>
         </div>
         <div className='PlanningContainer Window'>
-          Planning
+          <div>Planning</div>
           <Planning planningData={planningData}></Planning>
         </div>
         <div className='PropertiesContainer Window'>

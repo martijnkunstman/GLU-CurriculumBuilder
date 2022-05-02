@@ -1,1 +1,7 @@
 resize windows
+create planning
+drag and drop planning
+find a good place for the bin or alerative
+make setting panel
+
+save state trough node

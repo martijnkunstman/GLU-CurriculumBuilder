@@ -1,0 +1,27 @@
+.Project {
+    border: 1px black solid;
+    width: 200px;
+    border-radius: 10px;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Project .title {
+    flex-basis: 100%;
+    margin: 5px;
+}
+
+.Project .properties {
+    border: 0px black solid;
+    margin: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.Project .property {
+    border: 0px black solid;
+    margin: 1px;
+    display: flex;
+    flex-wrap: wrap;
+}
