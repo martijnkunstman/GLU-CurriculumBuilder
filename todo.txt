@@ -1,3 +1,8 @@
+show projects at planning
+make dnd possible for projects
+
+//
+
 resize windows
 create planning
 drag and drop planning
