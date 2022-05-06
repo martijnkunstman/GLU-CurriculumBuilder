@@ -20,7 +20,7 @@ export default function Project(props) {
   } else if (canDrop) {
     backgroundColor = 'darkkhaki'
   }
-  //show project at week position absolute....
+  //show project at week position
   return (
     <div className="Project" ref={drop} style={{backgroundColor}}>
       <div className="title">{props.title}</div>

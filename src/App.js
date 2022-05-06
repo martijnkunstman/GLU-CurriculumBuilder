@@ -61,7 +61,7 @@ export default function App() {
         </div>
         <div className='PlanningContainer Window'>
           <div>Planning</div>
-          <Planning planningData={planningData}></Planning>
+          <Planning planningData={planningData} projects={projects} findTypeOfProperty={findTypeOfProperty} removePropertyTypeFromProject={removePropertyTypeFromProject}></Planning>
         </div>
         <div className='PropertiesContainer Window'>
           Properties

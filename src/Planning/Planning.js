@@ -2,6 +2,7 @@ import React from 'react';
 import './Planning.css';
 import Week from './Week';
 
+
 export default function Planning(props) {
     
     let planningData = props.planningData.cohorts[0];
@@ -24,7 +25,7 @@ export default function Planning(props) {
           quarterNow++;
           quarterText = " - P" + quarter + "";
         }
-        weeks.push(<Week year={schoolYear.years} week={(j % 52 + 1)} name={(j % 52 + 1) + quarterText} holiday={holiday} key={("id" + counter)} style={{ width: "80px" }} />);
+        weeks.push(<Week findTypeOfProperty={props.findTypeOfProperty} removePropertyTypeFromProject={props.removePropertyTypeFromProject} projects={props.projects} year={schoolYear.years} week={(j % 52 + 1)} name={(j % 52 + 1) + quarterText } holiday={holiday} key={("id" + counter)} style={{ width: "80px" }} ></Week>);
         counter++;
         //app.innerHTML += '<div id="syid-'+planningData.schoolYearIds[i]+'|w-'+(j % 52 + 1)+'" class="scedule-item" style="width:80px;" data-week="' + (j % 52 + 1) + '" data-schoolyearId="' + planningData.schoolYearIds[i] + '" data-quarter="' + quarter + '"><div class="scedule-item-week">' + (j % 52 + 1) + quarterText + '</div><div class="scedule-item-holiday">' + holiday + '</div></div>';
       }
