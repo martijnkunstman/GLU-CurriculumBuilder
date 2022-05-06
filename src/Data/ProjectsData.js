@@ -24,7 +24,7 @@ let ProjectsData = [
         { id: 1, typeId: 1 },
         { id: 2, typeId: 2 },
       ],
-      planning: []
+      planning: [{year:2023, weeks:[39, 40]}]
     },
   ];  
 
