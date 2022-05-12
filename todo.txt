@@ -1,12 +1,24 @@
-show projects at planning
-make dnd possible for projects
+//-------------------------------------------------------
 
-//
+Now:
+
+make project more weeks
+prevent project drop on holliday or takes position
+remove project from week
+create new project
+create new breakweek
+remove project
+show projects in planning or in projects
+
+//-------------------------------------------------------
+
+Later:
 
 resize windows
 create planning
 drag and drop planning
 find a good place for the bin or alerative
 make setting panel
-
 save state trough node
+
+//-------------------------------------------------------
