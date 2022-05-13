@@ -26,6 +26,16 @@ let ProjectsData = [
       ],
       planning: [{year:2023, weeks:[39, 40]}]
     },
+    {
+      id: 4,
+      title: 'Project 4',
+      discription: 'desc',
+      properties: [
+        { id: 1, typeId: 1 },
+        { id: 2, typeId: 2 },
+      ],
+      planning: [{year:2023, weeks:[41, 42]}]
+    },
   ];  
 
-  export { ProjectsData };
+  export {ProjectsData};

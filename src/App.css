@@ -31,3 +31,10 @@
   width:100px;
   height:100px;
 }
+
+.button{
+  border: 1px black solid;
+  margin: 5px;
+  padding: 5px;
+  background-color: white;
+}
