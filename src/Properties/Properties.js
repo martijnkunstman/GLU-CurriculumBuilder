@@ -8,8 +8,7 @@ export default function Properties(props) {
       {props.propertiesData.map((property) => (
         <Property
           key={property.id}
-          property={property}
-          addPropertyTypeToProject={props.addPropertyTypeToProject} 
+          property={property}          
         />
       ))}
     </div>

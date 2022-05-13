@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Project.css';
+import { appContext } from '../App';
 import { useDrag } from 'react-dnd'
 import { ItemTypes } from '../ItemTypes.js'
 
 export default function Property(props) {
+  const { removePropertyTypeFromProject, findTypeOfProperty } = useContext(appContext);
+
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.DELETE,
     item: props,
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult()
       if (item && dropResult) {
-        props.removePropertyTypeFromProject(item.property.id, item.property.typeId, item.projectId);
+        removePropertyTypeFromProject(item.property.id, item.property.typeId, item.projectId);
       }
     },
     collect: (monitor) => ({
@@ -20,15 +23,15 @@ export default function Property(props) {
   }))
   const opacity = isDragging ? 0.4 : 1
   return (
-    <div ref={drag} className="property"  style={{ opacity }} key={props.property.id+"-"+props.property.typeId}>
-            <img
-              style={{ height: '24px', width: '24px' }}
-              src={
-                './svg/' +
-                props.findTypeOfProperty(props.property.typeId, props.property.id).icon +
-                '-solid.svg'
-              }
-            ></img>
-          </div>
+    <div ref={drag} className="property" style={{ opacity }} key={props.property.id + "-" + props.property.typeId}>
+      <img alt=""
+        style={{ height: '24px', width: '24px' }}
+        src={
+          './svg/' +
+          findTypeOfProperty(props.property.typeId, props.property.id).icon +
+          '-solid.svg'
+        }
+      ></img>
+    </div>
   );
 }

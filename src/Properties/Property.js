@@ -7,7 +7,7 @@ export default function Property(props) {
     <div className="property">
       <div className="title">{props.property.title}</div>
       {props.property.types.map((propertyType) => (
-        <PropertyType key={propertyType.id} propertyId={props.property.id} propertyType={propertyType} addPropertyTypeToProject={props.addPropertyTypeToProject} />
+        <PropertyType key={propertyType.id} propertyId={props.property.id} propertyType={propertyType}/>
       ))}
     </div>
   );

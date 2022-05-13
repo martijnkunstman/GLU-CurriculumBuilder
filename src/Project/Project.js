@@ -6,6 +6,7 @@ import { useDrag } from 'react-dnd'
 import { ItemTypes } from '../ItemTypes.js'
 
 export default function Project(props) {
+   
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.PROJECT,
     item: props,
@@ -28,6 +29,7 @@ export default function Project(props) {
       canDrop: monitor.canDrop(),
     }),
   }))
+
   const isActive = canDrop && isOver
   let backgroundColor = '#ffffff'
   if (isActive) {
@@ -35,18 +37,19 @@ export default function Project(props) {
   } else if (canDrop) {
     backgroundColor = 'darkkhaki'
   }
-  //
+
   function attachRef(el) {
     drag(el)
     drop(el)
   }
+  
   const opacity = isDragging ? 0.4 : 1;
   return (
     <div className="Project" ref={attachRef} style={{backgroundColor, opacity}}>
       <div className="title">{props.title}</div>
       <div className="properties">
         {props.properties.map((property) => (
-          <Property removePropertyTypeFromProject={props.removePropertyTypeFromProject} key={property.id+"-"+property.typeId} findTypeOfProperty={props.findTypeOfProperty} projectId={props.id} property={property} />
+          <Property key={property.id+"-"+property.typeId} projectId={props.id} property={property} />
         ))}
       </div>
     </div>
