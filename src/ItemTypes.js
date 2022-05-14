@@ -1,7 +1,8 @@
 export const ItemTypes = {
     PROPERTY: 'property',
     PROJECT: 'project',
+    PROJECTPROPERTY: 'projectproperty',
     WEEK: 'week',
-    DELETE: 'delete',
+    BIN: 'bin',
   }
   

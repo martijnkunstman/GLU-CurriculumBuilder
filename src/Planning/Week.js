@@ -10,7 +10,7 @@ export default function Week(props) {
   
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.PROJECT,
-    drop: () => ({ id: props.id }),
+    drop: () => ({ id: "week" }),
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),

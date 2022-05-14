@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Project.css';
 import Property from './Property';
+import { appContext } from '../App';
 import { useDrop } from 'react-dnd'
 import { useDrag } from 'react-dnd'
 import { ItemTypes } from '../ItemTypes.js'
 
 export default function Project(props) {
+  const { removeProject } = useContext(appContext);
    
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.PROJECT,
     item: props,
     end: (item, monitor) => {
-      const dropResult = monitor.getDropResult()
-      console.log("dropped on: " + dropResult);
+      const dropResult = monitor.getDropResult();
+      if (item && dropResult) {
+        if (dropResult.id === "bin") {
+          removeProject(item.id);
+        }
+        else {
+          if (dropResult.id === "week") {
+            //add project to week
+          }
+        }
+      }      
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),

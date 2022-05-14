@@ -8,7 +8,7 @@ export default function Property(props) {
   const { removePropertyTypeFromProject, findTypeOfProperty } = useContext(appContext);
 
   const [{ isDragging }, drag] = useDrag(() => ({
-    type: ItemTypes.DELETE,
+    type: ItemTypes.PROJECTPROPERTY,
     item: props,
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult()

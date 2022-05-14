@@ -5,7 +5,7 @@ import { ItemTypes } from './ItemTypes.js'
 
 export default function Bin(props) {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
-    accept: ItemTypes.DELETE,
+    accept: [ItemTypes.PROJECTPROPERTY, ItemTypes.PROJECT],
     drop: () => ({ id: props.id }),
     collect: (monitor) => ({
       isOver: monitor.isOver(),

@@ -40,11 +40,18 @@ export default function App() {
     setProjects(previousState => [...previousState, project])
   }
 
+  function removeProject(id) {
+    setProjects(previousState => {      
+      return previousState.filter(project => project.id !== id)
+    })
+  }
+
   function findTypeOfProperty(typeId, propertyId) {
     return propertiesData
       .find((x) => x.id === propertyId)
       .types.find((x) => x.id === typeId);
   }
+  
   function addPropertyTypeToProject(propertyId, typeId, projectId) {
     setProjects(previousState => {
       if (!findPropertyTypeInProject(previousState, propertyId, typeId, projectId)) {
@@ -75,7 +82,7 @@ export default function App() {
       <div className="AppContainer">
         <div className='ProjectContainer Window'>
           Projects
-          <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject }}>
+          <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject, removeProject }}>
             {projects.map((project) => (
               <Project
                 id={project.id}
@@ -92,7 +99,7 @@ export default function App() {
         </div>
         <div className='PlanningContainer Window'>
           <div>Planning</div>
-          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject }}>
+          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject }}>
             <Planning planningData={planningData} ></Planning>
           </appContext.Provider>
         </div>
