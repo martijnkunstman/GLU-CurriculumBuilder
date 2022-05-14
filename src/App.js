@@ -22,20 +22,36 @@ export default function App() {
   const [projects, setProjects] = useState([...projectsData]);
 
   function addProject() {
-    let id = uuidv4();    
+    let id = uuidv4();
     let project = {
       id: id,
-      title: 'Project ' + id.substr(0,8),
+      title: 'Project ' + id.substr(0, 8),
       discription: 'desc',
       properties: [{ id: 1, typeId: 2 }],
-      planning: [{ year: 2022, weeks: [] }]
+      planning: [{ year: 0, weeks: [] }]
     };
     setProjects(previousState => [...previousState, project])
   }
 
   function removeProject(id) {
-    setProjects(previousState => {      
+    setProjects(previousState => {
       return previousState.filter(project => project.id !== id)
+    })
+  }
+
+  function unplanProject(id) {
+    setProjects(previousState => {
+      let project = previousState.find(project => project.id === id);
+      project.planning = [{ year: 0, weeks: [] }];
+      return [...previousState]
+    })
+  }
+
+  function planProject(id, year, week) {
+    setProjects(previousState => {
+      let project = previousState.find(project => project.id === id);
+      project.planning = [{ year: year, weeks: [week] }];
+      return [...previousState]
     })
   }
 
@@ -44,7 +60,7 @@ export default function App() {
       .find((x) => x.id === propertyId)
       .types.find((x) => x.id === typeId);
   }
-  
+
   function addPropertyTypeToProject(propertyId, typeId, projectId) {
     setProjects(previousState => {
       if (!findPropertyTypeInProject(previousState, propertyId, typeId, projectId)) {
@@ -75,8 +91,8 @@ export default function App() {
       <div className="AppContainer">
         <div className='ProjectContainer Window'>
           Projects
-          <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject, removeProject }}>
-            {projects.map((project) => (
+          <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject }}>
+            {projects.filter((project) => project.planning[0].weeks.length === 0 && project.planning[0].year === 0).map((project) => (
               <Project
                 id={project.id}
                 key={project.id}
@@ -92,7 +108,7 @@ export default function App() {
         </div>
         <div className='PlanningContainer Window'>
           <div>Planning</div>
-          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject }}>
+          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject }}>
             <Planning planningData={planningData} ></Planning>
           </appContext.Provider>
         </div>

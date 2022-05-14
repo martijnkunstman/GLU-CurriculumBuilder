@@ -7,7 +7,7 @@ import { useDrag } from 'react-dnd'
 import { ItemTypes } from '../ItemTypes.js'
 
 export default function Project(props) {
-  const { removeProject } = useContext(appContext);
+  const { removeProject, planProject, unplanProject } = useContext(appContext);
    
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.PROJECT,
@@ -20,10 +20,16 @@ export default function Project(props) {
         }
         else {
           if (dropResult.id === "week") {
+            console.log(item.id+"-"+dropResult.year+"-"+dropResult.week);
             //add project to week
+            planProject(item.id, dropResult.year, dropResult.week);
           }
         }
-      }      
+      } 
+      else
+      {
+        unplanProject(item.id);
+      }     
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
