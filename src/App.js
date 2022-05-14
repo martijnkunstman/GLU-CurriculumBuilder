@@ -30,14 +30,14 @@ export default function App() {
   function addProject() {
     let projectsDataTemp = [...projects];
     let id = findNextId(projectsDataTemp);
-    projectsDataTemp.push({
+    let project = {
       id: id,
       title: 'Project ' + id,
       discription: 'desc',
       properties: [{ id: 1, typeId: 2 }],
-      planning: [{ year: 2024, weeks: [6, 9] }]
-    });
-    setProjects([...projectsDataTemp]);
+      planning: [{ year: 2022, weeks: [] }]
+    };
+    setProjects(previousState => [...previousState, project])
   }
 
   function findTypeOfProperty(typeId, propertyId) {
@@ -47,16 +47,18 @@ export default function App() {
   }
   function addPropertyTypeToProject(propertyId, typeId, projectId) {
     if (!findPropertyTypeInProject(propertyId, typeId, projectId)) {
-      let projectsDataTemp = [...projects];
-      projectsDataTemp.find(x => x.id === projectId).properties.push({ id: propertyId, typeId: typeId });
-      setProjects([...projectsDataTemp]);
+      setProjects(previousState => {
+        previousState.find(x => x.id === projectId).properties.push({ id: propertyId, typeId: typeId });
+        return [...previousState];
+      })
     }
   }
 
   function removePropertyTypeFromProject(propertyId, typeId, projectId) {
-    let projectsDataTemp = [...projects];
-    projectsDataTemp.find(x => x.id === projectId).properties = projectsDataTemp.find(x => x.id === projectId).properties.filter((x) => x.id !== propertyId || x.typeId !== typeId);
-    setProjects([...projectsDataTemp]);
+    setProjects(previousState => {
+      previousState.find(x => x.id === projectId).properties = previousState.find(x => x.id === projectId).properties.filter((x) => x.id !== propertyId || x.typeId !== typeId);
+      return [...previousState];
+    })
   }
 
   function findPropertyTypeInProject(propertyId, typeId, projectId) {
@@ -88,14 +90,14 @@ export default function App() {
         </div>
         <div className='PlanningContainer Window'>
           <div>Planning</div>
-          <appContext.Provider value={{projects, findTypeOfProperty, removePropertyTypeFromProject }}>
+          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject }}>
             <Planning planningData={planningData} ></Planning>
           </appContext.Provider>
         </div>
         <div className='PropertiesContainer Window'>
           Properties
           <appContext.Provider value={{ addPropertyTypeToProject }}>
-            <Properties propertiesData={propertiesData}/>
+            <Properties propertiesData={propertiesData} />
           </appContext.Provider>
         </div>
       </div>
