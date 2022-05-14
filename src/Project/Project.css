@@ -5,11 +5,21 @@
     margin: 5px;
     display: flex;
     flex-wrap: wrap;
+    z-index: 1;
 }
 
 .Project .title {
     flex-basis: 100%;
     margin: 5px;
+}
+
+.week .Project {
+    position: absolute;
+}
+
+.ProjectContainer .Project{
+    position: relative;
+    width: 100% !important;
 }
 
 .Project .properties {

@@ -6,8 +6,8 @@ import { ItemTypes } from '../ItemTypes.js'
 import Project from '../Project/Project';
 
 export default function Week(props) {
-  const { projects} = useContext(appContext);
-  
+  const { projects } = useContext(appContext);
+
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.PROJECT,
     drop: () => ({ id: "week", year: props.year[0], week: props.week }),
@@ -34,6 +34,7 @@ export default function Week(props) {
           id={project.id}
           key={project.id}
           title={project.title}
+          planning={project.planning}
           description={project.description}
           properties={project.properties}
         />

@@ -97,6 +97,7 @@ export default function App() {
                 id={project.id}
                 key={project.id}
                 title={project.title}
+                planning={project.planning}
                 description={project.description}
                 properties={project.properties}
               />

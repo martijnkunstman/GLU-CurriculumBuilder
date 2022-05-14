@@ -20,8 +20,6 @@ export default function Project(props) {
         }
         else {
           if (dropResult.id === "week") {
-            console.log(item.id+"-"+dropResult.year+"-"+dropResult.week);
-            //add project to week
             planProject(item.id, dropResult.year, dropResult.week);
           }
         }
@@ -55,6 +53,8 @@ export default function Project(props) {
     backgroundColor = 'darkkhaki'
   }
 
+  let width = (props.planning[0].weeks.length * 50) + "px";
+
   function attachRef(el) {
     drag(el)
     drop(el)
@@ -62,7 +62,7 @@ export default function Project(props) {
   
   const opacity = isDragging ? 0.4 : 1;
   return (
-    <div className="Project" ref={attachRef} style={{backgroundColor, opacity}}>
+    <div className="Project" ref={attachRef} style={{backgroundColor, opacity, width}}>
       <div className="title">{props.title}</div>
       <div className="properties">
         {props.properties.map((property) => (

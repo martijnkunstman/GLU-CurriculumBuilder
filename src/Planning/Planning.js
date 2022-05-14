@@ -4,12 +4,12 @@ import Week from './Week';
 
 
 export default function Planning(props) {
-    
-    let planningData = props.planningData.cohorts[0];
-    let planningConfig = props.planningData;
-    let weeks = [];
-    let quarterNow = 0;
-    let counter = 1;
+
+  let planningData = props.planningData.cohorts[0];
+  let planningConfig = props.planningData;
+  let weeks = [];
+  let quarterNow = 0;
+  let counter = 1;
 
   function createPlanningMap() {
     for (let i = 0; i < planningData.schoolYearIds.length; i++) {
@@ -25,9 +25,8 @@ export default function Planning(props) {
           quarterNow++;
           quarterText = " - P" + quarter + "";
         }
-        weeks.push(<Week removePropertyTypeFromProject={props.removePropertyTypeFromProject} year={schoolYear.years} week={(j % 52 + 1)} name={(j % 52 + 1) + quarterText } holiday={holiday} key={("id" + counter)} style={{ width: "80px" }} ></Week>);
+        weeks.push(<Week removePropertyTypeFromProject={props.removePropertyTypeFromProject} year={schoolYear.years} week={(j % 52 + 1)} name={(j % 52 + 1) + quarterText} holiday={holiday} key={("id" + counter)} style={{ width: "80px" }} ></Week>);
         counter++;
-        //app.innerHTML += '<div id="syid-'+planningData.schoolYearIds[i]+'|w-'+(j % 52 + 1)+'" class="scedule-item" style="width:80px;" data-week="' + (j % 52 + 1) + '" data-schoolyearId="' + planningData.schoolYearIds[i] + '" data-quarter="' + quarter + '"><div class="scedule-item-week">' + (j % 52 + 1) + quarterText + '</div><div class="scedule-item-holiday">' + holiday + '</div></div>';
       }
     }
   }

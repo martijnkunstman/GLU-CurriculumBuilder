@@ -2,13 +2,10 @@
 
 Now:
 
-add project to week
-add break
-render planning projects only projects assigned to weeks
-render projects projects only projects not assigned to weeks
-make small overview weeks
 make projects more than one week long
 color breakweeks different
+add break
+make small overview weeks
 Save ProjectsData to external JSON file and load/save it with NodeJS or
 Connect to externa datasource/base FireStore(?)
 
@@ -16,18 +13,19 @@ Connect to externa datasource/base FireStore(?)
 
 notes/ideas/temp:
 resize windows
-create planning
 drag and drop planning
 find a good place for the bin or alerative
 make setting panel
 save state trough node
 ~prevent project drop on holliday or takes position
-~remove project from week
 ~create new breakweek
-~show projects in planning or in projects
 
 //-------------------------------------------------------
 
 DONE:
 
 Convert from int ID to UID
+drag project to week
+drag project off week
+render planning projects only projects assigned to weeks
+render projects projects only projects not assigned to weeks
