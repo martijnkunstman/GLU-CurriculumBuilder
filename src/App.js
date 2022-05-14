@@ -9,6 +9,7 @@ import './App.css';
 import { ProjectsData } from './Data/ProjectsData';
 import { PropertiesData } from './Data/PropertiesData';
 import { PlanningData } from './Data/PlanningData';
+import { v4 as uuidv4 } from 'uuid';
 
 export const appContext = createContext();
 
@@ -20,20 +21,11 @@ export default function App() {
 
   const [projects, setProjects] = useState([...projectsData]);
 
-  function findNextId(data) {
-    const ids = data.map(object => {
-      return object.id;
-    });
-    //TODO: Fix bug if data is empty (convert to UID)
-    return Math.max(...ids) + 1;
-  }
-
   function addProject() {
-    let projectsDataTemp = [...projects];
-    let id = findNextId(projectsDataTemp);
+    let id = uuidv4();    
     let project = {
       id: id,
-      title: 'Project ' + id,
+      title: 'Project ' + id.substr(0,8),
       discription: 'desc',
       properties: [{ id: 1, typeId: 2 }],
       planning: [{ year: 2022, weeks: [] }]
