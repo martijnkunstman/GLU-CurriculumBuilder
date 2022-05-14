@@ -14,10 +14,11 @@ color breakweeks different
 ~create new breakweek
 ~show projects in planning or in projects
 
-//-------------------------------------------------------
+Convert from int ID to UID
+Save ProjectsData to external JSON file and load/save it with NodeJS or
+Connect to externa datasource/base FireStore(?)
 
-Later:
-
+notes/ideas/temp:
 resize windows
 create planning
 drag and drop planning

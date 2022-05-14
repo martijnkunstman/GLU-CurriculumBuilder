@@ -24,6 +24,7 @@ export default function App() {
     const ids = data.map(object => {
       return object.id;
     });
+    //TODO: Fix bug if data is empty (convert to UID)
     return Math.max(...ids) + 1;
   }
 
