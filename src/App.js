@@ -46,12 +46,15 @@ export default function App() {
       .types.find((x) => x.id === typeId);
   }
   function addPropertyTypeToProject(propertyId, typeId, projectId) {
-    if (!findPropertyTypeInProject(propertyId, typeId, projectId)) {
-      setProjects(previousState => {
+    setProjects(previousState => {
+      if (!findPropertyTypeInProject(previousState, propertyId, typeId, projectId)) {
         previousState.find(x => x.id === projectId).properties.push({ id: propertyId, typeId: typeId });
         return [...previousState];
-      })
-    }
+      }
+      else {
+        return [...previousState];
+      }
+    })
   }
 
   function removePropertyTypeFromProject(propertyId, typeId, projectId) {
@@ -61,9 +64,8 @@ export default function App() {
     })
   }
 
-  function findPropertyTypeInProject(propertyId, typeId, projectId) {
-    let projectsDataTemp = [...projects];
-    return projectsDataTemp
+  function findPropertyTypeInProject(projects, propertyId, typeId, projectId) {
+    return projects
       .find(x => x.id === projectId)
       .properties.find(x => x.id === propertyId && x.typeId === typeId);
   }
