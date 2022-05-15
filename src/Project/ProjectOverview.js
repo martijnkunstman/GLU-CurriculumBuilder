@@ -1,7 +1,5 @@
 import React from 'react';
 import './Project.css';
-import { appContext } from '../App';
-
 
 export default function ProjectOverview(props) {
 
