@@ -17,6 +17,7 @@ export default function Planning(props) {
       weeks.push(<div className="subtitle" key={("title" + counter)}>Leerjaar {(i + 1)} - {schoolYear.years.join("-")} </div>);
       let start = schoolYear.quarters[0][0] - 1;
       let end = schoolYear.quarters[schoolYear.quarters.length - 1][1] + 52;
+      let yearAdd = 0;
       for (let j = start; j < end; j++) {
         let quarter = findQuarterByWeek((j % 52 + 1), schoolYear.quarters, i);
         let holiday = findHolidays((j % 52 + 1), schoolYear.holidays);
@@ -25,7 +26,10 @@ export default function Planning(props) {
           quarterNow++;
           quarterText = " - P" + quarter + "";
         }
-        weeks.push(<Week removePropertyTypeFromProject={props.removePropertyTypeFromProject} year={schoolYear.years} week={(j % 52 + 1)} name={(j % 52 + 1) + quarterText} holiday={holiday} key={("id" + counter)} style={{ width: "80px" }} ></Week>);
+        let week = (j % 52 + 1);
+        if (j === 52) { yearAdd++ };
+        let year = schoolYear.years[yearAdd];
+        weeks.push(<Week removePropertyTypeFromProject={props.removePropertyTypeFromProject} year={year} week={week} name={week + quarterText} holiday={holiday} key={("id" + counter)} style={{ width: "80px" }} ></Week>);
         counter++;
       }
     }

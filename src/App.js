@@ -21,14 +21,22 @@ export default function App() {
 
   const [projects, setProjects] = useState([...projectsData]);
 
+  
   function addProject() {
+    addProjectWithType(1);
+  }
+  function addBreak() {
+    addProjectWithType(2);
+  }
+  
+  function addProjectWithType(type) {
     let id = uuidv4();
     let project = {
       id: id,
       title: 'Project ' + id.substr(0, 8),
       discription: 'desc',
       properties: [{ id: 1, typeId: 2 }],
-      planning: [{ year: 0, weeks: [] }]
+      planning: {year:0, startWeek:0, type: type, durationWeeks: 1}
     };
     setProjects(previousState => [...previousState, project])
   }
@@ -42,15 +50,26 @@ export default function App() {
   function unplanProject(id) {
     setProjects(previousState => {
       let project = previousState.find(project => project.id === id);
-      project.planning = [{ year: 0, weeks: [] }];
-      return [...previousState]
+      project.planning.year = 0;
+      project.planning.startWeek = 0;
+      project.planning.durationWeeks = 1;
+      return [...previousState];
+    })
+  }
+
+  function changeDuration(id, duration) {
+    setProjects(previousState => {
+      let project = previousState.find(project => project.id === id);
+      project.planning.durationWeeks = duration;
+      return [...previousState];
     })
   }
 
   function planProject(id, year, week) {
     setProjects(previousState => {
       let project = previousState.find(project => project.id === id);
-      project.planning = [{ year: year, weeks: [week] }];
+      project.planning.year = year;
+      project.planning.startWeek =  week;      
       return [...previousState]
     })
   }
@@ -86,13 +105,18 @@ export default function App() {
       .properties.find(x => x.id === propertyId && x.typeId === typeId);
   }
 
+  function consoleLogState()
+  {
+    console.log(projects);
+  }
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="AppContainer">
         <div className='ProjectContainer Window'>
           Projects
-          <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject }}>
-            {projects.filter((project) => project.planning[0].weeks.length === 0 && project.planning[0].year === 0).map((project) => (
+          <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration }}>
+            {projects.filter((project) => project.planning.startWeek === 0 && project.planning.year === 0).map((project) => (
               <Project
                 id={project.id}
                 key={project.id}
@@ -105,11 +129,12 @@ export default function App() {
           </appContext.Provider>
           <Bin id="bin"></Bin>
           <div className="button" onClick={addProject}>add Project</div>
-          <div className="button">add Break</div>
+          <div className="button" onClick={addBreak}>add Break</div>
+          <div className="button" onClick={consoleLogState}>consoleLogState</div>
         </div>
         <div className='PlanningContainer Window'>
           <div>Planning</div>
-          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject }}>
+          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration }}>
             <Planning planningData={planningData} ></Planning>
           </appContext.Provider>
         </div>

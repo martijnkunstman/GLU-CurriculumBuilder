@@ -1,11 +1,51 @@
 .Project {
     border: 1px black solid;
+    box-sizing: border-box;
     width: 200px;
     border-radius: 10px;
-    margin: 5px;
+    margin: 4px;
     display: flex;
     flex-wrap: wrap;
     z-index: 1;
+}
+
+.Project.type1{
+    background-color: white;
+}
+.Project.type2{
+    background-color: orange;
+}
+.Project .durationMinus
+{
+    position:absolute;
+    bottom:5px;
+    width:10px;
+    height:10px;
+    left:5px;
+    border: 1px solid black;
+    text-align:center;
+    line-height: 10px;
+    border-radius: 5px;
+}
+.Project .durationMinus:hover
+{
+    background-color: red;
+}
+.Project .durationPlus
+{
+    position:absolute;
+    bottom:5px;
+    width:10px;
+    height:10px;
+    right:5px;
+    border: 1px solid black;
+    text-align:center;
+    line-height: 10px;
+    border-radius: 5px;
+}
+.Project .durationPlus:hover
+{
+    background-color: green;
 }
 
 .Project .title {

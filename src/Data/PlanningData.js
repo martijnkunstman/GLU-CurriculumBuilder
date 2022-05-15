@@ -69,16 +69,16 @@ let PlanningData = {
 
   "holidays": [{
     "id": 1,
-    "name": "Herfstvakantie"
+    "name": "Herfst-vakantie"
   }, {
     "id": 2,
-    "name": "Kerstvakantie"
+    "name": "Kerst-vakantie"
   }, {
     "id": 3,
-    "name": "Voorjaars- vakantie"
+    "name": "Voorjaars-vakantie"
   }, {
     "id": 4,
-    "name": "Meivakantie"
+    "name": "Mei-vakantie"
   }],
 
   "types": [{

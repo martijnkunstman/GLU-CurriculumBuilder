@@ -7,8 +7,8 @@ import { useDrag } from 'react-dnd'
 import { ItemTypes } from '../ItemTypes.js'
 
 export default function Project(props) {
-  const { removeProject, planProject, unplanProject } = useContext(appContext);
-   
+  const { removeProject, planProject, unplanProject, changeDuration } = useContext(appContext);
+
   const [{ isDragging }, drag] = useDrag(() => ({
     type: ItemTypes.PROJECT,
     item: props,
@@ -23,19 +23,18 @@ export default function Project(props) {
             planProject(item.id, dropResult.year, dropResult.week);
           }
         }
-      } 
-      else
-      {
+      }
+      else {
         unplanProject(item.id);
-      }     
+      }
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
       handlerId: monitor.getHandlerId(),
     }),
-  })) 
-  
-  
+  }))
+
+
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ItemTypes.PROPERTY,
     drop: () => ({ id: props.id }),
@@ -46,29 +45,47 @@ export default function Project(props) {
   }))
 
   const isActive = canDrop && isOver
-  let backgroundColor = '#ffffff'
+  let backgroundColor = '';
   if (isActive) {
     backgroundColor = 'darkgreen'
   } else if (canDrop) {
     backgroundColor = 'darkkhaki'
   }
 
-  let width = (props.planning[0].weeks.length * 50) + "px";
+  let tempWidth = props.planning.durationWeeks * 50;
+  if (props.planning.durationWeeks>1) {
+    tempWidth = tempWidth + (props.planning.durationWeeks - 1) * 6;
+  }
+  let width = (tempWidth + 2) + "px";
 
   function attachRef(el) {
     drag(el)
     drop(el)
   }
-  
+
+  function durationMinus() {
+    if (props.planning.durationWeeks > 1) {
+      changeDuration(props.id, props.planning.durationWeeks - 1);
+    }
+  }
+
+  function durationPlus() {
+    changeDuration(props.id, props.planning.durationWeeks + 1);
+  }
+
   const opacity = isDragging ? 0.4 : 1;
   return (
-    <div className="Project" ref={attachRef} style={{backgroundColor, opacity, width}}>
+    <div className={"Project type" + props.planning.type} ref={attachRef} style={{ backgroundColor, opacity, width }}>
       <div className="title">{props.title}</div>
       <div className="properties">
         {props.properties.map((property) => (
-          <Property key={property.id+"-"+property.typeId} projectId={props.id} property={property} />
+          <Property key={property.id + "-" + property.typeId} projectId={props.id} property={property} />
         ))}
       </div>
+      {props.planning.durationWeeks > 1 &&
+        <div onClick={durationMinus} className="durationMinus">-</div>
+      }
+      <div onClick={durationPlus} className="durationPlus">+</div>
     </div>
   );
 }
