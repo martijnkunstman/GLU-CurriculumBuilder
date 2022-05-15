@@ -16,6 +16,8 @@ check errors (overlapping projects and holidays)
 
 Notes/ideas/temp:
 
+analyse and report 
+display mode / edit mode
 resize windows
 find a good place for the bin or alerative
 make setting panel

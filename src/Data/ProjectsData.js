@@ -216,8 +216,48 @@
             "type": 1,
             "durationWeeks": 2
         }
+    },
+    {
+        "id": "9077a71f-e60f-4446-9b69-df5d0a8ae292",
+        "title": "Project 13",
+        "discription": "desc",
+        "properties": [],
+        "planning": {
+            "year": 2023,
+            "startWeek": 35,
+            "type": 1,
+            "durationWeeks": 2
+        }
+    },
+    {
+        "id": "b3ecb3cf-8c7e-4d5c-b737-54371443b457",
+        "title": "Project 14",
+        "discription": "desc",
+        "properties": [],
+        "planning": {
+            "year": 2023,
+            "startWeek": 37,
+            "type": 1,
+            "durationWeeks": 2
+        }
+    },
+    {
+        "id": "a95afb2e-e3d5-4b3d-941e-d152a0f9e0c2",
+        "title": "break",
+        "discription": "desc",
+        "properties": [
+            {
+                "id": 1,
+                "typeId": 2
+            }
+        ],
+        "planning": {
+            "year": 2023,
+            "startWeek": 39,
+            "type": 2,
+            "durationWeeks": 1
+        }
     }
 ]
-
 
 export { ProjectsData };
