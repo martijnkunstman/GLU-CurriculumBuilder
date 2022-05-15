@@ -10,6 +10,7 @@ import { ProjectsData } from './Data/ProjectsData';
 import { PropertiesData } from './Data/PropertiesData';
 import { PlanningData } from './Data/PlanningData';
 import { v4 as uuidv4 } from 'uuid';
+import PlanningOverview from './Planning/PlanningOverview';
 
 export const appContext = createContext();
 
@@ -21,14 +22,14 @@ export default function App() {
 
   const [projects, setProjects] = useState([...projectsData]);
 
-  
+
   function addProject() {
     addProjectWithType(1);
   }
   function addBreak() {
     addProjectWithType(2);
   }
-  
+
   function addProjectWithType(type) {
     let id = uuidv4();
     let project = {
@@ -36,7 +37,7 @@ export default function App() {
       title: 'Project ' + id.substr(0, 8),
       discription: 'desc',
       properties: [{ id: 1, typeId: 2 }],
-      planning: {year:0, startWeek:0, type: type, durationWeeks: 1}
+      planning: { year: 0, startWeek: 0, type: type, durationWeeks: 1 }
     };
     setProjects(previousState => [...previousState, project])
   }
@@ -69,7 +70,7 @@ export default function App() {
     setProjects(previousState => {
       let project = previousState.find(project => project.id === id);
       project.planning.year = year;
-      project.planning.startWeek =  week;      
+      project.planning.startWeek = week;
       return [...previousState]
     })
   }
@@ -105,7 +106,7 @@ export default function App() {
       .properties.find(x => x.id === propertyId && x.typeId === typeId);
   }
 
-  function changeTitleOfProject(id, title) {  
+  function changeTitleOfProject(id, title) {
     setProjects(previousState => {
       let project = previousState.find(project => project.id === id);
       project.title = title;
@@ -113,8 +114,7 @@ export default function App() {
     })
   }
 
-  function consoleLogState()
-  {
+  function consoleLogState() {
     console.log(projects);
   }
 
@@ -140,12 +140,23 @@ export default function App() {
           <div className="button" onClick={addBreak}>add Break</div>
           <div className="button" onClick={consoleLogState}>consoleLogState</div>
         </div>
-        <div className='PlanningContainer Window'>
-          <div>Planning</div>
-          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
-            <Planning planningData={planningData} ></Planning>
-          </appContext.Provider>
+        <div className="centerContainer">
+          <div className='PlanningContainer Window'>
+            <div>Planning</div>
+            <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
+              <Planning planningData={planningData} ></Planning>
+            </appContext.Provider>
+          </div>
+          <div className='PlanningContainer Window' style={{"overflowY": "unset"}}>
+            <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
+              <PlanningOverview planningData={planningData} ></PlanningOverview>
+            </appContext.Provider>
+          </div>
+          
+
         </div>
+
+
         <div className='PropertiesContainer Window'>
           Properties
           <appContext.Provider value={{ addPropertyTypeToProject }}>

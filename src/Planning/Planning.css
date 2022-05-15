@@ -1,35 +1,78 @@
-.Planning{
+.Planning {
     overflow-y: auto;
+    overflow-x: hidden;
     display: flex;
     flex-wrap: wrap;
-  }
-.subtitle{
+}
+
+.Planning .subtitle {
     flex-basis: 100%;
     margin-top: 20px;
     font-size: 12px;
     font-weight: bold;
 }
-.week{
+
+.Planning .week {
     height: 100px;
     width: 62px;
     border: 1px solid white;
-    box-sizing:border-box;
+    box-sizing: border-box;
     position: relative;
-    margin:2px;
-    margin-top:30px;
-    border-radius:10px;
-    background-color: rgba(0,0,0,0.1);
+    margin: 2px;
+    margin-top: 30px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 11px; ;
+    font-size: 11px;
+    ;
 }
 
-.weekTitle{
+.Planning .weekTitle {
     position: absolute;
     top: -2px;
     transform: translateY(-100%);
     left: 0;
     font-size: 11px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+
+.PlanningOverview {
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.PlanningOverview .subtitle {
+    flex-basis: 100%;
+    margin-top: 0px;
+    font-size: 12px;
+    font-weight: bold;
+    height: 0px;
+}
+
+.PlanningOverview .week {
+    height: 20px;
+    width: 20px;
+    border: 1px solid white;
+    box-sizing: border-box;
+    position: relative;
+    margin: 2px;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 11px;
+}
+
+.PlanningOverview .weekTitle {
+    position: absolute;
+    top: -2px;
+    transform: translateY(-100%);
+    left: 0;
+    font-size: 8px;
     color: rgba(0, 0, 0, 0.5);
 }
