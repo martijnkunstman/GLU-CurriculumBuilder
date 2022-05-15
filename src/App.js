@@ -105,6 +105,14 @@ export default function App() {
       .properties.find(x => x.id === propertyId && x.typeId === typeId);
   }
 
+  function changeTitleOfProject(id, title) {  
+    setProjects(previousState => {
+      let project = previousState.find(project => project.id === id);
+      project.title = title;
+      return [...previousState];
+    })
+  }
+
   function consoleLogState()
   {
     console.log(projects);
@@ -115,7 +123,7 @@ export default function App() {
       <div className="AppContainer">
         <div className='ProjectContainer Window'>
           Projects
-          <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration }}>
+          <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
             {projects.filter((project) => project.planning.startWeek === 0 && project.planning.year === 0).map((project) => (
               <Project
                 id={project.id}
@@ -134,7 +142,7 @@ export default function App() {
         </div>
         <div className='PlanningContainer Window'>
           <div>Planning</div>
-          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration }}>
+          <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
             <Planning planningData={planningData} ></Planning>
           </appContext.Provider>
         </div>

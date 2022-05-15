@@ -1,7 +1,6 @@
 .Project {
     border: 1px black solid;
     box-sizing: border-box;
-    width: 200px;
     border-radius: 10px;
     margin: 4px;
     display: flex;
@@ -13,44 +12,78 @@
     background-color: white;
 }
 .Project.type2{
-    background-color: orange;
+    background-color: rgba(0,0,0,0.2);
+    border-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.Project.type2 .title{
+    font-size: 11px;
+    text-align: center;
+}
+
+.Project .info{
+    position:absolute;
+    top:5px;
+    width:12px;
+    height:12px;
+    right:5px;
+    border: 1px solid rgba(0,0,0,0.25);
+    text-align:center;
+    line-height: 12px;
+    border-radius: 6px;
+}
+.Project .info:hover
+{
+    background-color: rgba(0,0,0,0.50);
+    color: white;
+}
+
+
 .Project .durationMinus
 {
     position:absolute;
     bottom:5px;
-    width:10px;
-    height:10px;
+    width:12px;
+    height:12px;
     left:5px;
-    border: 1px solid black;
+    border: 1px solid rgba(0,0,0,0.25);
     text-align:center;
-    line-height: 10px;
-    border-radius: 5px;
+    line-height: 12px;
+    border-radius: 6px;
 }
 .Project .durationMinus:hover
 {
-    background-color: red;
+    background-color: rgba(0,0,0,0.50);
+    color: white;
 }
 .Project .durationPlus
 {
     position:absolute;
     bottom:5px;
-    width:10px;
-    height:10px;
+    width:12px;
+    height:12px;
     right:5px;
-    border: 1px solid black;
+    border: 1px solid rgba(0,0,0,0.25);
     text-align:center;
-    line-height: 10px;
-    border-radius: 5px;
+    line-height: 12px;
+    border-radius: 6px;
 }
 .Project .durationPlus:hover
 {
-    background-color: green;
+    background-color: rgba(0,0,0,0.50);
+    color: white;
 }
 
 .Project .title {
     flex-basis: 100%;
-    margin: 5px;
+    margin: 4px;
+    width:100%;
+    padding:4px;
+    border: 0px solid white;
+    background: none;
+    height: 10px;
 }
 
 .week .Project {

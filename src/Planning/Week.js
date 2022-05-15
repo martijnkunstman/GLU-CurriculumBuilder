@@ -17,7 +17,7 @@ export default function Week(props) {
     }),
   }))
   const isActive = canDrop && isOver
-  let backgroundColor = "rgba(255,255,255,0.75)"; 
+  let backgroundColor = "rgba(0,0,0,0.1)"; 
   if (props.holiday === "") {
     backgroundColor = "rgba(255,255,255,0.5)";
     if (isActive) {

@@ -2,30 +2,36 @@
 
 Now:
 
-make projects more than one week long
-color breakweeks different
-add break
+change project desc
+use cursors hand drag etc.
+style
+add properties and find icons en style
+zoom in on project
 make small overview weeks
 Save ProjectsData to external JSON file and load/save it with NodeJS or
 Connect to externa datasource/base FireStore(?)
+check errors (overlapping projects and holidays)
 
 //-------------------------------------------------------
 
-notes/ideas/temp:
+Notes/ideas/temp:
+
 resize windows
-drag and drop planning
 find a good place for the bin or alerative
 make setting panel
-save state trough node
-~prevent project drop on holliday or takes position
-~create new breakweek
+prevent project drop on holliday or takes position
 
 //-------------------------------------------------------
 
-DONE:
+Done:
 
+change project title
 Convert from int ID to UID
 drag project to week
 drag project off week
 render planning projects only projects assigned to weeks
 render projects projects only projects not assigned to weeks
+add break
+color breakweeks different
+make projects more than one week long
+drag and drop planning
