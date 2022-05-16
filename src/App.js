@@ -12,6 +12,10 @@ import { PlanningData } from './Data/PlanningData';
 import { v4 as uuidv4 } from 'uuid';
 import PlanningOverview from './Planning/PlanningOverview';
 
+import { StyledEngineProvider } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 export const appContext = createContext();
 
 export default function App() {
@@ -120,6 +124,7 @@ export default function App() {
 
   return (
     <DndProvider backend={HTML5Backend}>
+      <StyledEngineProvider injectFirst>
       <div className="AppContainer">
         <div className='ProjectContainer Window'>
           Projects
@@ -136,9 +141,9 @@ export default function App() {
             ))}
           </appContext.Provider>
           <Bin id="bin"></Bin>
-          <div className="button" onClick={addProject}>add Project</div>
-          <div className="button" onClick={addBreak}>add Break</div>
-          <div className="button" onClick={consoleLogState}>consoleLogState</div>
+          <Button onClick={addProject} variant="contained" startIcon={<DeleteIcon />}>add Project</Button>
+          <Button onClick={addBreak} variant="contained" startIcon={<DeleteIcon />}>add Break</Button>
+          <Button onClick={consoleLogState} variant="contained" startIcon={<DeleteIcon />}>consoleLogState</Button>
         </div>
         <div className="centerContainer">
           <div className='PlanningContainer Window'>
@@ -164,6 +169,7 @@ export default function App() {
           </appContext.Provider>
         </div>
       </div>
+      </StyledEngineProvider>
     </DndProvider >
   );
 }
