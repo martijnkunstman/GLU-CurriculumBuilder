@@ -4,6 +4,9 @@ Now:
 
 change project desc
 use cursors hand drag etc.
+use material design (layout)
+bin icon
+add icon
 style
 add properties and find icons en style
 zoom in on project
