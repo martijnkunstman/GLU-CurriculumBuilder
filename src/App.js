@@ -31,6 +31,13 @@ import Paper from '@mui/material/Paper';
 import MenuIcon from '@mui/icons-material/Menu';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+
+import ViewListIcon from '@mui/icons-material/ViewList';
+import ViewModuleIcon from '@mui/icons-material/ViewModule';
+import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
+
 
 export const appContext = createContext();
 
@@ -189,123 +196,123 @@ export default function App() {
 
   const mdTheme = createTheme();
 
-  const [open, setOpen] = React.useState(true);
-  const toggleDrawer = () => {
-    setOpen(!open);
+
+  const [alignment, setAlignment] = React.useState('list');
+
+  const handleAlignment = (event, newAlignment) => {
+    setAlignment(newAlignment);
   };
+
 
   return (
     <DndProvider backend={HTML5Backend}>
       <ThemeProvider theme={mdTheme}>
         <CssBaseline />
-        <Box sx={{ display: 'flex' }}>
-          <AppBar position="absolute" open={open}>
-            <Toolbar
-              sx={{
-                pr: '24px', // keep right padding when drawer closed
-              }}
-            >
-              <IconButton
-                edge="start"
-                color="inherit"
-                aria-label="open drawer"
-                onClick={toggleDrawer}
-                sx={{
-                  marginRight: '36px',
-                  ...(open && { display: 'none' }),
-                }}
-              >
-                <MenuIcon />
-              </IconButton>
-              <Typography
-                component="h1"
-                variant="h6"
-                color="inherit"
-                noWrap
-                sx={{ flexGrow: 1 }}
-              >
-                GLU Curriculum Builder
-              </Typography>
-              <IconButton color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
-            </Toolbar>
-          </AppBar>
-          <Drawer variant="permanent" open={open}>
-            <Toolbar
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-end',
-                px: [1],
-              }}
-            >
-              <IconButton onClick={toggleDrawer}>
-                <ChevronLeftIcon />
-              </IconButton>
-            </Toolbar>
-            <Divider />
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+        <Box display="flex" flexDirection="column" height="100vh" overflow="hidden">
+
+          <Box>
+            <AppBar position="sticky">
+              <Toolbar>
+                <IconButton size="large" edge="start" color="inherit" aria-label="menu" sx={{ mr: 2 }}>
+                  <MenuIcon />
+                </IconButton>
+                GLU - Curriculum Builder
+                <Box sx={{ flexGrow: 1 }} />
+                <Button color="inherit">Login</Button>
+              </Toolbar>
+            </AppBar>
+          </Box>
+
+
+          <Box display="flex" flexDirection="row" overflow="hidden" height="100vh">
+            <Box>
               <Button fullWidth={true} style={{ justifyContent: "flex-start" }} onClick={addProject} variant="text" startIcon={<AddIcon />}>add Project</Button>
               <Button fullWidth={true} style={{ justifyContent: "flex-start" }} onClick={addBreak} variant="text" startIcon={<AddIcon />}>add Break</Button>
               <Button fullWidth={true} style={{ justifyContent: "flex-start" }} onClick={consoleLogState} variant="text" startIcon={<NotesIcon />}>consoleLogState</Button>
               <Divider />
               <Bin id="bin"></Bin>
-              <Divider />
             </Box>
-          </Drawer>
-          <Box
-            sx={{
+
+            <Box sx={{
               backgroundColor: (theme) =>
                 theme.palette.mode === 'light'
                   ? theme.palette.grey[100]
                   : theme.palette.grey[900],
-              flexGrow: 1,
-              height: '100vh',
-              width: '100vw',
               overflow: 'auto',
             }}>
-              <Toolbar />
-            <Container maxWidth="false">
-              <Grid container spacing={3}>
-
-              
-                <Grid item>
-                  <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
-                    {projects.filter((project) => project.planning.startWeek === 0 && project.planning.year === 0).map((project) => (
-                      <Project
-                        id={project.id}
-                        key={project.id}
-                        title={project.title}
-                        planning={project.planning}
-                        description={project.description}
-                        properties={project.properties}
-                      />
-                    ))}
-                  </appContext.Provider>
-                </Grid>
-                <Grid item>
-                  <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
-                    <Planning planningData={planningData} ></Planning>
-                  </appContext.Provider>
-                </Grid>
-                <Grid item>
-                  <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
-                    <PlanningOverview planningData={planningData} ></PlanningOverview>
-                  </appContext.Provider>
-                </Grid>
-                <Grid item>
-                  <appContext.Provider value={{ addPropertyTypeToProject }}>
-                    <Properties propertiesData={propertiesData} />
-                  </appContext.Provider>
-                </Grid>
 
 
-              </Grid>
-            </Container>
+
+              <Box>
+                <appContext.Provider value={{ findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
+                  {projects.filter((project) => project.planning.startWeek === 0 && project.planning.year === 0).map((project) => (
+                    <Project
+                      id={project.id}
+                      key={project.id}
+                      title={project.title}
+                      planning={project.planning}
+                      description={project.description}
+                      properties={project.properties}
+                    />
+                  ))}
+                </appContext.Provider>
+              </Box>
+
+              <Box>
+                <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
+                  <Planning planningData={planningData} ></Planning>
+                </appContext.Provider>
+              </Box>
+
+              <Box>
+                <appContext.Provider value={{ projects, findTypeOfProperty, removePropertyTypeFromProject, removeProject, planProject, unplanProject, changeDuration, changeTitleOfProject }}>
+                  <PlanningOverview planningData={planningData} ></PlanningOverview>
+                </appContext.Provider>
+              </Box>
+
+
+
+            </Box>
+
+            <Box>
+
+              <appContext.Provider value={{ addPropertyTypeToProject }}>
+                <Properties propertiesData={propertiesData} />
+              </appContext.Provider>
+
+            </Box>
+
+
+
           </Box>
+
+
+
+
+          <Box>
+            <AppBar position="sticky">
+              <Toolbar>Copyright 2022
+                <Box sx={{ flexGrow: 1 }} />
+                <ToggleButtonGroup value={alignment}
+                  exclusive
+                  onChange={handleAlignment}
+                  aria-label="text alignment"
+                >
+                  <ToggleButton value="list" aria-label="list">
+                    <ViewListIcon />
+                  </ToggleButton>
+                  <ToggleButton value="module" aria-label="module">
+                    <ViewModuleIcon />
+                  </ToggleButton>
+                  <ToggleButton value="quilt" aria-label="quilt">
+                    <ViewQuiltIcon />
+                  </ToggleButton>
+                </ToggleButtonGroup>
+
+              </Toolbar>
+            </AppBar>
+          </Box>
+
 
         </Box>
       </ThemeProvider>
