@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import { useDrop } from 'react-dnd'
 import { ItemTypes } from './ItemTypes.js'
+import DeleteIcon from '@mui/icons-material/Delete';
+import Button from '@mui/material/Button';
 
 export default function Bin(props) {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
@@ -20,8 +22,7 @@ export default function Bin(props) {
     backgroundColor = 'darkkhaki'
   }
   return (
-    <div className="Bin" ref={drop} style={{backgroundColor}}>
-      BIN
-    </div>
+    <Button ref={drop} fullWidth={true} style={{justifyContent: "flex-start", backgroundColor}} variant="text" startIcon={<DeleteIcon />}>Delete</Button>
+
   );
 }
