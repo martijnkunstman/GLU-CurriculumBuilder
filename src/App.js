@@ -33,7 +33,7 @@ import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-
+import MuiToggleButton from "@mui/material/ToggleButton";
 import ViewListIcon from '@mui/icons-material/ViewList';
 import ViewModuleIcon from '@mui/icons-material/ViewModule';
 import ViewQuiltIcon from '@mui/icons-material/ViewQuilt';
@@ -203,6 +203,15 @@ export default function App() {
     setAlignment(newAlignment);
   };
 
+  const ToggleButton = styled(MuiToggleButton)({
+    "&.Mui-selected, &.Mui-selected:hover": {
+      color: "white",
+      backgroundColor: '#rgba(255,255,255,0.5)'
+    }
+  });
+
+  
+
 
   return (
     <DndProvider backend={HTML5Backend}>
@@ -298,13 +307,13 @@ export default function App() {
                   onChange={handleAlignment}
                   aria-label="text alignment"
                 >
-                  <ToggleButton value="list" aria-label="list">
+                  <ToggleButton value="list" aria-label="list" sx={{ color: 'rgba(255,255,255,0.5)' }}>
                     <ViewListIcon />
                   </ToggleButton>
-                  <ToggleButton value="module" aria-label="module">
-                    <ViewModuleIcon />
+                  <ToggleButton value="module" aria-label="module" sx={{ color: 'rgba(255,255,255,0.5)' }}>
+                    <ViewModuleIcon/>
                   </ToggleButton>
-                  <ToggleButton value="quilt" aria-label="quilt">
+                  <ToggleButton value="quilt" aria-label="quilt" sx={{ color: 'rgba(255,255,255,0.5)' }}>
                     <ViewQuiltIcon />
                   </ToggleButton>
                 </ToggleButtonGroup>
